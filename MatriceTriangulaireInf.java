@@ -1,47 +1,25 @@
+import java.util.ArrayList;
+
 public class MatriceTriangulaireInf {
 
-  private int ligne;
-  private int colonne;
-  private float[][] donnee;
+  private int dim;
+  private ArrayList<Float> donnee;
 
-  public MatriceTriangulaireInf(float[][] data, int n, int m) {
-
-    if (n==m) {
-      this.ligne = n;
-      this.colonne = m;
-
-      float[][] low = new float[n][m];
-
-      for (int i = 1; i < n ; i++) {
-        for (int j = 0; j < i; j++) {
-
-          low[i][j] = data[i][j];
-
-        }
-      }
-      this.donnee = low;
-    }
-    else
-      System.out.println("ERREUR : matrice non carrée");
+  public MatriceTriangulaireInf(ArrayList<Float> data, int n) {
+    this.dim = n;
+    this.donnee = data;
   }
-
+  
   public String toString() {
     String s = "";
-
-    for (int i = 0; i < this.ligne; i++) {
-      if (i != 0)
-        s += "\n";
-
-      for (int j= 0; j < this.colonne; j++) {
-        if (this.donnee[i][j]==0) {
+    for (int i = 0; i < this.donnee.size(); i++) {
+        if (this.donnee.get(i)==0) {
           s += " . "+ "\t";
         }
-        else
-          s += String.valueOf(this.donnee[i][j]) + "\t";
-      }
+          else
+            s += String.valueOf(this.donnee.get(i)) + "\t";
     }
     return s;
-  }
-
+}
 
 }

@@ -1,44 +1,40 @@
+import java.util.ArrayList;
+
 public class Diagonale {
 
-  private int ligne;
-  private int colonne;
-  private float[][] donnee;
+  private int dim;
+  private ArrayList<Float> donnee;
 
-  public Diagonale(float[][] data, int n, int m) {
-
-    if (n==m) {
-      this.ligne = n;
-      this.colonne = m;
-
-      float[][] diag = new float[n][m];
-
-      for (int i = 0; i < n; i++) {
-              diag[i][i] = data[i][i];
-      }
-      this.donnee = diag;
-    }
-    else
-      System.out.println("ERREUR : matrice non carrée");
+  public Diagonale(ArrayList<Float> data, int n) {
+    this.dim = n;
+    this.donnee = data;
   }
 
 
+  // toString : idem Matrice
   public String toString() {
     String s = "";
 
-    for (int i = 0; i < this.ligne; i++) {
+    for (int i = 0; i < this.dim; i++) {
       if (i != 0)
         s += "\n";
 
-      for (int j= 0; j < this.colonne; j++) {
-        if (this.donnee[i][j]==0) {
-          s += " . "+ "\t";
+      for (int j= 0; j < this.dim; j++) {
+
+        if (i==j) {
+          if (this.donnee.get(i)==0) {
+            s += " . "+ "\t";
+          }
+          else
+            s += String.valueOf(this.donnee.get(i)) + "\t";
+
         }
         else
-          s += String.valueOf(this.donnee[i][j]) + "\t";
+          s += " . "+ "\t";
+
       }
     }
     return s;
   }
-
 
 }
